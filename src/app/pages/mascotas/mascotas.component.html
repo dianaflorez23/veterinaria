@@ -1,0 +1,63 @@
+<h3 class="text-center">Formulario de mascotas </h3>
+<br>
+
+<form [formGroup]="formDatosMacota">
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label for="seleccion   ">Seleccione cliente</label>
+            <select id="seleccion" class="form-control" formControlName="seleccion">
+                <option [value]="cliente.identificarCliente" *ngFor="let cliente of listaCliente">
+                    {{cliente.PrimerNombre}} {{cliente.identificarCliente}} </option>
+            </select>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="nombre">nombre mascota</label>
+            <input  [class.is-invalid]="nomMascotaNoValido"  type="text" class="form-control" id="nombre" placeholder="nombre" formControlName="nombre">
+            <small *ngIf="nomMascotaNoValido">El campo nombre mascota es requerido</small>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label for="apodo">Apodo</label>
+            <input [class.is-invalid]="apodoNoValido"  type="text" class="form-control" id="apodo" placeholder="apodo" formControlName="apodo">
+            <small *ngIf="apodoNoValido">El campo Apodo es requerido</small>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="edad">Edad</label>
+            <input [class.is-invalid]="nomMascotaNoValido"  type="text" class="form-control" id="edad" placeholder="edad" formControlName="edad">
+            <small *ngIf="nomMascotaNoValido">El campo Confirmar ContraseÑa es requerido</small>
+        </div>
+
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label for="raza">Raza</label>
+            <input [class.is-invalid]="razaNoValido"  type="text" class="form-control" id="raza" placeholder="Raza" formControlName="raza">
+            <small *ngIf="razaNoValido">El campo raza es requerido</small>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="color">Color</label>
+            <input [class.is-invalid]="colorNoValido"  type="text" class="form-control" id="color" placeholder="Color" formControlName="color">
+            <small *ngIf="colorNoValido">El campo color es requerido</small>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+    <div class="form-row col-md-12">
+        <div class="col-md-8"></div>
+        <div class="col-md-1" style="text-align-last: end;">
+            <button type="submit" class="btn btn-secondary"[routerLink]="['/actualizarMascotas']" >volver</button>
+        </div>
+        <div class="col-md-2" style="text-align-last: end;">
+            <button type="submit" class="btn btn-primary" (click)="guardarMascota()">Guardar Mascosta</button>
+        </div>
+    </div>
+</form>
+<br><br><br>

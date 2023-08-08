@@ -1,0 +1,54 @@
+<h3 class="text-center">Formulario de producto </h3>
+<br>
+
+<form [formGroup]="formDatosProducto">
+    
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label  for="producto">ID</label>
+            <input  [class.is-invalid]="idNoValido"  id="id" class="form-control" placeholder="id"  formControlName="id">
+            <small *ngIf="idNoValido">El campo ID requerido</small>
+        </div>
+        
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label  for="producto">Producto</label>
+            <input  [class.is-invalid]="ProductoNoValido"  id="producto" class="form-control" placeholder="producto"  formControlName="producto">
+            <small *ngIf="ProductoNoValido">El campo Producto requerido</small>
+        </div>
+        
+
+    </div>
+    <br>
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label   for="inputedad">Precio</label>
+            <input  [class.is-invalid]="PrecioNoValido" type="text" class="form-control" id="precio" placeholder="precio" formControlName="precio">
+            <small *ngIf="PrecioNoValido">El campo Precio es requerido</small>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+     
+
+
+
+    <div class="form-row col-md-12">
+        <div class="col-md-8"></div>
+        <div class="col-md-1" style="text-align-last: end;">
+            <button type="button" class=" btn btn-secondary" [routerLink]="['/actualizarProducto']">volver</button>
+        </div>
+        <div class="col-md-1" style="text-align-last: end;">
+            <button type="button" class=" btn btn-primary" (click)="guardarProducto()" >Guardar</button>
+        </div>        
+    </div>
+    <img style="height:300px;" id="img_obs" [src]= "formDatosProducto.value.imagen">
+    <span class="btn btn-outline-info btn-file btn-cargar-img">
+        <i class="fa fa-plus"></i>
+        Cargar imagen
+        <input type="file"  id="filesId"
+            name="archivoImagen" accept="image/*" (change)="updateSource($event)" />
+    </span>
+</form>
+<br><br><br>

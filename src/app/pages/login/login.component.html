@@ -1,0 +1,59 @@
+<section  class="container w-75 mt-5 ">
+    <div  class="container" class="row align-content-lg-stretch">
+        <div class="col bg" img src="assets/login.jpeg" width="32" alt="">   
+            <div class= "text-center letra">
+                <h3 style="color:#FFFFFF"
+                 width="30" alt=""> Maecenas mattis agestas</h3>
+                <p  style="color:#FFFFFF" width="30" alt="" > Erdum et malesuada fames ac ante ipsum primbes <br> in faucibus uspendisses porta.</p>
+            </div>                            
+        </div>        
+        <div class="col prueba">
+            <div class="text-end">
+            </div>  
+            <h1 class="fw-bold text-center py5 my-5 fontFamily"><em>Lovebirds</em></h1> <br>
+            <h4 class="fw-bold text-center py5 my-4 letragris text-secondary letrawelcome">welcome to Lovebirds</h4>
+
+            
+            <!--Login-->     
+            
+            <form [formGroup]="formDatoslogin">
+                <div class="mb-4 margen">
+                    <label for="user" class="form-label" >Nombre de usuario</label>
+                    <input [class.is-invalid]="loginusuarioNoValido" class="form-control" name="usuariored" placeholder="Nombre de Usuairo" formControlName="usuariored">  
+                    <small *ngIf="loginusuarioNoValido">El campo usuario es requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input [class.is-invalid]="loginpasswordNoValido"  type="password" class="form-control" name="password" placeholder="contraseña" formControlName="password">
+                    <small *ngIf="loginpasswordNoValido">El campo contraseña es requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="inputState">Seleccionar perfil</label>
+                    <select [class.is-invalid]="perfilNoValido"  name="perfil" id="inputState" class="form-control" formControlName="perfil">
+                      <option value="1"> Cliente</option>
+                      <option value="2">Vendedor  </option>
+                      <option value="3">Administrador</option>             
+                    </select>
+                    <small *ngIf="perfilNoValido">El campo contraseña es requerido</small>
+                  </div>
+
+                <div class="my-4 text-end margen">
+                     <span><a href="#" [routerLink]="['/restablecerContrasena']" >Recuperar Contraseña</a></span>
+                 </div>
+                <div class= "fw-bold text-center">
+                    <button type="submit" class="btn btn-secondary redondo" (click)="validarLogin()">Iniciar Sesion</button>
+                </div>  
+                <div class= "my-5 fw-bold text-center">
+                    <button class="btn" [routerLink]="['/actualizarCliente/nuevo']"> <img src="assets/2000px-Google_G_Logo.svg_.png" width="32" alt=""> 
+                        Registrar Cliente</button>
+                </div>
+                <div class="my-3 text-center">
+                     <span>New loverbrids? <a href="#">create account</a></span> 
+                 </div>
+            </form>
+        </div>
+    </div>
+</section>
+ 
+
+<script src="bootstrap.bundle.min.js"></script>

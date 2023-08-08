@@ -1,0 +1,62 @@
+<h3 class="text-center">Formulario de colaborador </h3>
+<br>
+
+<form [formGroup]="formDatoscolaborador">
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label for="PrimerNombre">primerNombre</label>
+            <input [class.is-invalid]="PrimerNombreoNoValido" type="text" class="form-control" id="PrimerNombre" placeholder="primer Nombre" formControlName="PrimerNombre">
+            <small *ngIf="PrimerNombreoNoValido">El campo Primer Nombre requerido</small>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="segundoNombre">segundo Nombre</label>
+            <input [class.is-invalid]="segundoNombreNoValido" type="text" class="form-control" id="segundoNombre" placeholder="segundo Nombre" formControlName="segundoNombre">
+            <small *ngIf="segundoNombreNoValido">El campo segundo Nombre requerido</small>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label for="Apellidos" >apellidos</label>
+            <input [class.is-invalid]="ApellidosNoValido" type="text" class="form-control" id="apellidos" placeholder="Apellidos" formControlName="Apellidos">
+            <small *ngIf="ApellidosNoValido">El campo apellidos requerido</small>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="UsuarioRed">identificacion</label>
+            <input  [class.is-invalid]="UsuarioRedNoValido" type="text" class="form-control" id="UsuarioRed" placeholder="usuario de Red" formControlName="UsuarioRed">
+            <small *ngIf="UsuarioRedNoValido">El campo identificacion requerido</small>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+    <div class="form-row col-md-12">
+        <div class="col-md-1"></div>
+        <div class="form-group col-md-5">
+            <label for="password" >contraseña</label>
+            <input [class.is-invalid]="passwordNoValido" type="password" class="form-control" id="password" placeholder="contraseña" formControlName="password">
+            <small *ngIf="passwordNoValido">El campo contraseña es requerido</small>
+        </div>
+        <div class="form-group col-md-5">
+            <label for="ConfirmarContrasena">confirmar contraseña</label>
+            <input [class.is-invalid]="ConfirmarContrasenaNoValido" type="password" class="form-control" id="ConfirmarContrasena" placeholder="confirmar contraseña" formControlName="ConfirmarContrasena">
+            <small *ngIf="ConfirmarContrasenaNoValido">El campo Confirmar ContraseÑa es requerido</small>
+        </div>
+        <div class="col-md-1"></div>
+
+    </div>
+    <div class="form-row col-md-12">
+        <div class="col-md-8"></div>
+        <div class="col-md-1" style="text-align-last: end;">
+            <button type="submit" class="btn btn-secondary" [routerLink]="['/actualizarColaborador']">volver</button>
+        </div>
+        <div class="col-md-2" style="text-align-last: end;">
+            <button type="submit" class="btn btn-primary" (click)="guardarColaborador()">Guardar colaborador</button>
+        </div>
+    </div>
+
+</form>
+<br><br><br>

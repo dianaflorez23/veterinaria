@@ -1,0 +1,6 @@
+export const  Constantes = {
+  CONST_COD_PERFIL_ADM: "3", 
+  CONST_COD_PERFIL_VENDENDOR: "2",
+  CONST_COD_PERFIL_CLIENTE: "1",
+  CONST_PARAM_IN_PATH: "nuevo"
+}

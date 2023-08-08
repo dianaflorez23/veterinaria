@@ -1,0 +1,45 @@
+<section  class="container w-75 mt-5 ">
+
+    <div  class="container" class="row align-content-lg-stretch">
+        <div class="col bg" img src="assets/login.jpeg" width="32" alt="">   
+            
+        </div>        
+        <div class="col prueba">
+            <h1 class="fw-bold text-center py5 my-5 fontFamily"><em>Lovebirds</em></h1>
+            <h4 class="fw-bold text-center py5 my-4 letragris text-secondary letrawelcome">Restablecer contraseña  </h4>
+            <br>    
+            <div class="text-end">  
+            </div>         
+           
+            <form [formGroup]="formRestablecerContrasena" action="#">
+                <div class="mb-4 margen">
+                    <label for="segundoNombre" class="form-label" >Usuario de red</label>
+                    <input [class.is-invalid]="UsuarioRedNoValido" class="form-control" name="UsuarioRed" placeholder="usuario de red" formControlName="UsuarioRed">  
+                    <small *ngIf="UsuarioRedNoValido">El campo usuario de red es requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="password" class="form-label">Nueva Contraseña</label>
+                    <input [class.is-invalid]="nuevaContrasenaNoValido"  type="password" class="form-control" name="Contrasena" placeholder="Usuario de red" formControlName="nuevaContrasena">
+                    <small *ngIf="nuevaContrasenaNoValido">El campo  Nueva Contraseña equerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="password" class="form-label">Confirmar Contraseña</label>
+                    <input [class.is-invalid]="ConfirmarContrasenaNoValido"  type="password" class="form-control" name="ConfirmarContraseña" placeholder="Confirmar Contraseña" formControlName="ConfirmarContrasena">
+                    <small *ngIf="ConfirmarContrasenaNoValido">El campo Confirmar Contraseña es requerido</small>
+                </div>
+                <div class= "fw-bold text-center">
+                    <button type="submit" class="btn btn-secondary redondo" (click)="validarUsuario()">Guardar</button>
+                </div>  
+ 
+                            
+            </form>
+            
+        </div>
+    </div>
+    <br><br> 
+
+</section>
+ 
+
+
+

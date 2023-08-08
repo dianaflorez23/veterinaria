@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background: #FFFFFF;
+ }
+ .bg{
+    background-image: url(assets/login.png);
+    background-position: center center;
+ }
+ .prueba{
+    background: #FFFFFF;
+ }
+ .fontFamily{
+     font-family: cursive;
+ }
+ .letrawelcome{
+    font-family: Lucida Sans Unicode;
+ }
+ .margen{
+    margin-left: 80px;
+    margin-right: 80px;
+ }
+ .redondo{
+    border-radius: 15px;
+ }
+ .letra{
+    margin-top: 500px;        
+ }
+
+ .galeria{
+   display: inline-flex;
+   flex-wrap: wrap;
+   align-content: center;
+ }
+ .tarjeta{
+   margin: 1%;
+   padding: 1%;
+
+ }
+
+ .imagen-car{
+   height: 300px;
+   width: 100%;
+ }
+ .card-header{
+   width: 100% !important;
+ }
+ .card-footer{
+   width: 100% !important;
+ }
+ 

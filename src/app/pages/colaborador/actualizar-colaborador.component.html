@@ -1,0 +1,27 @@
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" data-dismiss="modal" [routerLink]="['/colaborador']">Agregar
+        colaborador</button>
+</div>
+<div class="modal-body">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="text-center">Primer nombre</th>
+                <th scope="col" class="text-center" >segundo nombre</th>
+                <th scope="col" class="text-center">Apellidos</th>
+                <th scope="col" class="text-center">identificacion</th>
+                <th scope="col" class="text-center">Editar</th>
+                              
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cliente of listaColaborador ">
+                <td>{{ cliente.PrimerNombre }}</td>
+                <td>{{ cliente.segundoNombre }}</td>
+                <td>{{ cliente.Apellidos }}</td>
+                <td>{{ cliente.UsuarioRed }}</td>
+                <td> <input type="button"  class="btn btn-info" value="Editar" (click)="EditarColaborador(cliente.UsuarioRed)">   </td>				
+            </tr>
+    </table>
+</div>

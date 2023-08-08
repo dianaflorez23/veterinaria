@@ -1,0 +1,272 @@
+import { Injectable } from '@angular/core';
+import { clienteModel } from '../models/modelCiente';
+import { MascotaModel } from '../models/modelMascota';
+import { colaboradorModel, RestablecerContrasenaModel } from '../models/modelColaborador';
+import { modelSesion } from '../models/modelSesion';
+import { Constantes } from '../pages/shared/Constantes';
+import { productoModel } from '../models/modelProducto';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class CoreService {
+
+  listaMascotas: MascotaModel[] = [];
+  ListaCliente: clienteModel[] = [];
+  listaColaborador: colaboradorModel[] = [];
+  listaUsuario: colaboradorModel[] = [];
+  ListaProducto: productoModel[] = [];
+
+  _modelSesion: modelSesion = new modelSesion();
+
+  constructor() {
+
+    let colaborador = new colaboradorModel();
+    colaborador.UsuarioRed = "icm8905c";
+    colaborador.perfil = Constantes.CONST_COD_PERFIL_ADM;
+
+    this.listaColaborador.push(colaborador);
+  }
+
+  //#region mascota
+  getListaMascotas() {
+    this.listaMascotas = [];
+    this.ListaCliente.forEach(cliente => {
+      cliente.mascotas.forEach(mascota => {
+        this.listaMascotas.push(mascota);
+      });
+    });
+    return this.listaMascotas;
+  }
+
+  setListaMascotas(listaMascotas: MascotaModel[]) {
+    this.listaMascotas = listaMascotas;
+  }
+
+  agregarMascota(mascota: MascotaModel) {
+    this.listaMascotas.push(mascota);
+  }
+  // crear mascota
+  crearMascota(mascota: MascotaModel) {
+    let posicion = this.ListaCliente.findIndex(usuario => { return usuario.identificarCliente === mascota.seleccion; });
+    if (!this.ListaCliente[posicion].mascotas)
+      this.ListaCliente[posicion].mascotas = [];
+    this.ListaCliente[posicion].mascotas.push(mascota);
+    console.log(this.ListaCliente);
+  }
+
+  obtenerMascota(idcliente: string, nombreMascota: string) {
+    let posicion = this.ListaCliente.findIndex(usuario => { return usuario.identificarCliente === idcliente; });
+    let posicionMascota = this.ListaCliente[posicion].mascotas.findIndex(mascota => { return mascota.nombre === nombreMascota });
+    return this.ListaCliente[posicion].mascotas[posicionMascota];
+  }
+
+    // actualizar mascota
+    actualizarMascota(infoMascota: MascotaModel) {
+      let posicion = this.listaMascotas.findIndex(a => a.seleccion == infoMascota.seleccion)
+      if (posicion < 0) {
+        alert('mascota no encontrado');
+      }
+      else {
+        this.listaMascotas[posicion].nombre = infoMascota.nombre;
+        this.listaMascotas[posicion].apodo = infoMascota.apodo;
+        this.listaMascotas[posicion].edad = infoMascota.edad;
+        this.listaMascotas[posicion].raza = infoMascota.raza;
+        this.listaMascotas[posicion].color = infoMascota.color;
+        console.log(this.listaMascotas);
+        alert('mascota actualizado"')
+      }
+    }
+
+  //#endregion mascota
+
+  //#region Cliente
+  getListaCliente() {
+    return this.ListaCliente;
+  }
+
+  setListaCliente(ListaCliente: clienteModel[]) {
+    this.ListaCliente = ListaCliente;
+  }
+
+  agregarCliente(usuario: clienteModel) {
+    this.ListaCliente.push(usuario);
+    console.log(this.ListaCliente);
+  }
+  //devuelve objeto cliente apartir del usuario de red
+  obtenerCliente(_usuariored: string) {
+    let posicion = this.ListaCliente.findIndex(a => a.identificarCliente == _usuariored);
+    return this.ListaCliente[posicion];
+  }
+  // actualizar cliente
+  actualizarCliente(infoCliente: clienteModel) {
+    let posicion = this.ListaCliente.findIndex(a => a.identificarCliente == infoCliente.identificarCliente)
+    if (posicion < 0) {
+      alert('usuario no encontrado');
+    }
+    else {
+      this.ListaCliente[posicion].PrimerNombre = infoCliente.PrimerNombre;
+      this.ListaCliente[posicion].Apellidos = infoCliente.Apellidos;
+      this.ListaCliente[posicion].segundoNombre = infoCliente.segundoNombre;
+      console.log(this.ListaCliente);
+      alert('usuario actualizado"')
+    }
+  }
+  //#endregion Cliente  
+
+  //#region colaborador
+  getListaColaborador() {
+    return this.listaColaborador;
+  }
+
+  setListaColaborador(listaColaborador: colaboradorModel[]) {
+    this.listaColaborador = listaColaborador;
+  }
+
+  agregarColaborador(usuario: colaboradorModel) {
+    this.listaColaborador.push(usuario);
+    console.log(this.listaColaborador);
+    console.log(usuario);
+  }
+
+  // actualizar colaborador
+  actualizarColaborador(infoProducto: colaboradorModel) {
+    let posicion = this.listaColaborador.findIndex(a => a.UsuarioRed == infoProducto.UsuarioRed)
+    if (posicion < 0) {
+      alert('cliente no encontrado');
+    }
+    else {
+      this.listaColaborador[posicion].PrimerNombre = infoProducto.PrimerNombre;
+      this.listaColaborador[posicion].segundoNombre = infoProducto.segundoNombre;
+      this.listaColaborador[posicion].Apellidos = infoProducto.Apellidos;
+      console.log(this.listaColaborador);
+      alert('Colaborador actualizado"')
+    }
+  }
+  //devuelve objeto colaborador apartir del usuario de red
+  obtenerColaborador(_usuariored: string) {
+    let posicion = this.listaColaborador.findIndex(a => a.UsuarioRed == _usuariored);
+    return this.listaColaborador[posicion];
+  }
+
+
+  //Valida que el colaborador exista
+  validarColaborador(_usuariored: string, perfil: string) {
+    let posicion = this.listaColaborador.findIndex(a => a.UsuarioRed === _usuariored && a.perfil === perfil);
+    if (posicion < 0)
+      return false;
+    else
+      return true;
+  }
+  //#endregion colaborador
+
+  //#region producto
+  getListaProducto() {
+    return this.ListaProducto;
+  }
+
+  setListaPorducto(ListaProducto: productoModel[]) {
+    this.ListaProducto = ListaProducto;
+  }
+
+  agregarProducto(producto: productoModel) {
+    this.ListaProducto.push(producto);
+    console.log(this.ListaProducto);
+  }
+
+  //devuelve objeto producto apartir del id
+  obtenerProducto(id: string) {
+    let posicion = this.ListaProducto.findIndex(a => a.id == id);
+    return this.ListaProducto[posicion];
+  }
+
+  actualizarProducto(producto: productoModel) {
+    let posicion = this.ListaProducto.findIndex(a => a.id == producto.id)
+    if (posicion < 0) {
+      alert('Producto no encontrado');
+    }
+    else {
+      this.ListaProducto[posicion].producto = producto.producto;
+      this.ListaProducto[posicion].precio = producto.precio;
+      console.log(this.ListaProducto);
+      alert('Producto actualizado"')
+    }
+  }
+
+  EliminarProducto(id: string) {
+    let posicion = this.ListaProducto.findIndex(a => a.id == id);
+
+    if (posicion < 0) {
+      alert('Producto no encontrado');
+    }
+    else {
+      this.ListaProducto.splice(posicion, posicion);
+      alert('Producto eliminado"')
+    }
+  }
+
+  //#endregion producto
+
+
+  //validar que el login sea correcto
+  loginCliente(_usuariored: string, _password: string) {
+    let posicion = this.ListaCliente.findIndex(a => a.identificarCliente === _usuariored && a.password === _password);
+    if (posicion < 0) {
+      return false;
+    }
+    else {
+      this._modelSesion.nombreUsuario = _usuariored;
+      this._modelSesion.perfil = 1;
+      return true;
+    }
+  }
+
+
+
+  //validar que el objeto de session exista
+  validarSession() {
+    if (this._modelSesion && this._modelSesion.nombreUsuario.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  // establecer contraseña
+  validarContrasena(restablecer: RestablecerContrasenaModel) {
+    let posicion = this.ListaCliente.findIndex(usuario => { return usuario.identificarCliente === restablecer.UsuarioRed; });
+    if (posicion < 0) {
+      alert('usuario no encontrado');
+    }
+    else {
+      this.ListaCliente[posicion].password = restablecer.nuevaContrasena;
+      this.ListaCliente[posicion].ConfirmarContrasena = restablecer.ConfirmarContrasena;
+      console.log(this.ListaCliente);
+      alert('se modifico contraseña exitosamente')
+    }
+
+  }
+  //llena sesion
+  llenarSession(_usuariored: string, tipoUser: number) {
+    this._modelSesion.nombreUsuario = _usuariored;
+    this._modelSesion.perfil = tipoUser;
+  }
+
+  getSesion(){ 
+    return this._modelSesion;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

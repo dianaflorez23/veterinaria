@@ -1,0 +1,68 @@
+<section  class="container w-75 mt-5 ">
+    <h1 class="fw-bold text-center py5 my-5 fontFamily"><em>Lovebirds</em></h1>
+    <h4 class="fw-bold text-center py5 my-4 letragris text-secondary letrawelcome">Registrar Cliente</h4>
+    <br>  
+<form [formGroup]="formRegistrarCliente" action="#">  
+    <div  class="container" class="row align-content-lg-stretch">
+        <div class="col uno">   
+            <div class="text-end">
+            </div>  
+
+            <!--Form registrar usuario-->     
+            
+           
+                <div class="mb-4 margen">
+                    <label for="PrimerNombre" class="form-label" >Primer Nombre</label>
+                    <input [class.is-invalid]="PrimerNombreoNoValido" class="form-control" name="PrimerNombre" placeholder="Nombres" formControlName="PrimerNombre">  
+                    <small *ngIf="PrimerNombreoNoValido">El campo Primer Nombre requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="Apellidos" class="form-label">Apellidos</label>
+                    <input [class.is-invalid]="ApellidosNoValido"   class="form-control" name="Apellidos" placeholder="Apellidos" formControlName="Apellidos">
+                    <small *ngIf="ApellidosNoValido">El campo Apellidos es requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input [class.is-invalid]="passwordNoValido"  type="password"  class="form-control" name="Contrasena" placeholder="Contraseña" formControlName="password">
+                    <small *ngIf="passwordNoValido">El campo contraseña es requerido</small>
+                </div>
+             
+     
+            
+        </div>        
+        <div class="col prueba">
+            <div class="text-end">  
+            </div>         
+           
+
+                <div class="mb-4 margen">
+                    <label for="segundoNombre" class="form-label" >Segundo Nombre</label>
+                    <input [class.is-invalid]="segundoNombreNoValido" class="form-control" name="segundoNombre" placeholder="Segundo Nombre" formControlName="segundoNombre">  
+                    <small *ngIf="segundoNombreNoValido">El campo Segundo Nombre es requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="password" class="form-label">identificacion </label>
+                    <input [class.is-invalid]="identificarClienteNoValido"   class="form-control" name="identificarCliente" placeholder="Usuario de red" formControlName="identificarCliente">
+                    <small *ngIf="identificarClienteNoValido">El campo Usuario de red es requerido</small>
+                </div>
+                <div class="mb-4 margen">
+                    <label for="password" class="form-label">Confirmar Contraseña</label>
+                    <input [class.is-invalid]="ConfirmarContrasenaNoValido"  type="password" class="form-control" name="ConfirmarContraseña" placeholder="Confirmar Contraseña" formControlName="ConfirmarContrasena">
+                    <small *ngIf="ConfirmarContrasenaNoValido">El campo Confirmar Contraseña es requerido</small>
+                </div>
+
+            
+        </div>
+    </div>
+
+    <br><br> 
+    <div class= "fw-bold text-center">
+        <button type="submit" class="btn btn-secondary redondo" (click)="guardarCliente()" >Guardar</button>
+    </div> 
+    
+</form>
+</section>
+ 
+
+
+
