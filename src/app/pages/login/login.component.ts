@@ -46,7 +46,7 @@ export class LoginComponent {
   }
 
   validarLogin() {
-    debugger
+    // debugger
     if (this.formDatoslogin.invalid) { return }
     switch (this.formDatoslogin.value.perfil) {
       case Constantes.CONST_COD_PERFIL_CLIENTE:
@@ -57,7 +57,7 @@ export class LoginComponent {
         }
         break;
       case Constantes.CONST_COD_PERFIL_ADM:
-        debugger
+        // debugger
         if (this.coreService.validarColaborador(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.perfil )) {
           this.validacionLdap(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.password);
 
@@ -74,7 +74,7 @@ export class LoginComponent {
         break;
         default: { alert("credenciales incorrectas"); }
     }
-    alert("credenciales incorrectas"); 
+    // alert("credenciales incorrectas"); 
    
 }
 
@@ -82,7 +82,7 @@ validacionLdap(usuario: string, password: string,) {
 
   this.WSserGeneral.validacionLdap(usuario, password).subscribe((resp: any) => {
     if (resp == true) {
-      debugger;
+      // debugger;
       this.coreService.llenarSession(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.perfil);
       switch (this.formDatoslogin.value.perfil) {
         case Constantes.CONST_COD_PERFIL_ADM: {
@@ -98,7 +98,9 @@ validacionLdap(usuario: string, password: string,) {
     }
     else
       alert("Credenciales incorrectos")
-  }, error => { alert("Credenciales incorrectos") });
+  }, error => { 
+    alert("Credenciales incorrectos") 
+  });
 
 
 }

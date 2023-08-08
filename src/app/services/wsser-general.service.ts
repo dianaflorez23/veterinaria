@@ -27,7 +27,7 @@ export class WSSerGeneralService {
   }
 
   validacionLdap(user:string, pass:string){
-    return this.http.get<boolean>('http://172.24.232.14:8100/WSSerGeneral/login/LDAP?pass='+ pass +'&user='+ user);
+    return this.http.get('http://172.24.232.14:8100/WSSerGeneral/login/LDAP?pass='+ pass +'&user='+ user);
   }
 
 
