@@ -52,10 +52,7 @@ import { InterceptorMascotasInterceptor } from './interceptor-mascotas.intercept
     HttpClientModule    
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterceptorMascotasInterceptor
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorMascotasInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
