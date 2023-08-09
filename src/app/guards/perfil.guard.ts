@@ -16,7 +16,7 @@ export class PerfilGuard implements CanActivate {
 
 
   canActivate(route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+              state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let sesion = this.coreService.getSesion();
     if(sesion.perfil.rutasAcceso.includes(state.url) ){
       return true;

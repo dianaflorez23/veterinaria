@@ -69,9 +69,12 @@ export class CoreService {
   getListaMascotas() {
     this.listaMascotas = [];
     this.ListaCliente.forEach(cliente => {
-      cliente.mascotas.forEach(mascota => {
-        this.listaMascotas.push(mascota);
-      });
+      if(cliente.mascotas){
+        cliente.mascotas.forEach(mascota => {
+          this.listaMascotas.push(mascota);
+        });
+      }
+     
     });
     return this.listaMascotas;
   }

@@ -4,7 +4,7 @@
         Mascota</button>
 </div>
 <br>
-<div class="modal-body">
+<div class="modal-body" *ngIf = "Listamascotas && Listamascotas.length == 0">
     <table class="table table-bordered">
         <thead class="thead-dark">
             <tr>
