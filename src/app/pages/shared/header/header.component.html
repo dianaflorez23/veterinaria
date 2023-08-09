@@ -12,16 +12,16 @@
     <ul class="mb-10 navbar-nav mr-auto">
 
      <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/actualizarMascotas']">mascotas</a>
+        <a class="nav-link" href="#" [routerLink]="['/actualizarMascotas']" *ngIf="validarPermisos(5)">mascotas</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/cliente']" >Clientes</a>
+        <a class="nav-link" href="#" [routerLink]="['/cliente']" *ngIf="validarPermisos(2)">Clientes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#"  [routerLink]="['/actualizarColaborador']" >colaborador</a>
+        <a class="nav-link" href="#"  [routerLink]="['/actualizarColaborador']" *ngIf="validarPermisos(3)">colaborador</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/actualizarProducto']">producto</a>
+        <a class="nav-link" href="#" [routerLink]="['/actualizarProducto']" *ngIf="validarPermisos(0)">producto</a>
       </li>
 
 

@@ -3,7 +3,7 @@
   <div class="col-sm-4"></div>
   <div class="col-sm-4">
 <div class="modal-footer">
-  <button type="button" class="form-control btn btn-primary" [routerLink]="['/producto/nuevo']">Agregar producto</button>
+  <button type="button" class="form-control btn btn-primary" [routerLink]="['/producto/nuevo']" *ngIf="validarPermisos(1)" >Agregar producto</button>
 </div>
 </div>
 <div class="col-sm-4"></div>

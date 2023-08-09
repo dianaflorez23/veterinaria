@@ -53,9 +53,8 @@ export class CoreService {
                                                   "/actualizarMascotas",
                                                   "/cliente",
                                                   "/actualizarCliente/:identificarCliente",
-                                                  "/colaborador",
-                                                  "/colaborador/:UsuarioRed",
-                                                  "/actualizarColaborador"];
+                                                  "/actualizarProducto"
+                                                  ];
 
 
     this.perfilCliente = new ModelPerfil();
@@ -63,7 +62,9 @@ export class CoreService {
     this.perfilCliente.nombrePerfil = Constantes.CONST_NOMBRE_PERFIL_CLIENTE;
     this.perfilCliente.rutasAcceso= [      "/actualizarMascotas",
                                            "/actualizarProducto"];
-  }
+    this.perfilCliente.permisos = [0,
+                                   5];
+   }
 
   //#region mascota
   getListaMascotas() {

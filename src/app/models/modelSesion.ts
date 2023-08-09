@@ -7,4 +7,5 @@ export class ModelPerfil{
     public idPerfil! : number;
     public nombrePerfil!:string;
     public rutasAcceso : string[] = [];
+    public permisos : number[] = [];
 }

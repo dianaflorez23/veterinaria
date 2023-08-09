@@ -31,6 +31,10 @@ export class ActualizarProductoComponent {
     this.router.navigate(['actualizarProducto']);
   }
   
+  validarPermisos(opcion : number){
+    return this.coreService.getSesion().perfil.permisos.includes(opcion);
+  }
+  
 }
 
 
