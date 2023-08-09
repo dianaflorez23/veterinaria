@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { clienteModel } from '../models/modelCiente';
 import { MascotaModel } from '../models/modelMascota';
 import { colaboradorModel, RestablecerContrasenaModel } from '../models/modelColaborador';
-import { modelSesion } from '../models/modelSesion';
+import { ModelSesion, ModelPerfil } from '../models/modelSesion';
 import { Constantes } from '../pages/shared/Constantes';
 import { productoModel } from '../models/modelProducto';
 
@@ -18,7 +18,11 @@ export class CoreService {
   listaUsuario: colaboradorModel[] = [];
   ListaProducto: productoModel[] = [];
 
-  _modelSesion: modelSesion = new modelSesion();
+  _modelSesion: ModelSesion = new ModelSesion();
+  
+  perfilAdministrador !: ModelPerfil;
+  perfilVendedor !: ModelPerfil;
+  perfilCliente !: ModelPerfil;
 
   constructor() {
 
@@ -27,6 +31,38 @@ export class CoreService {
     colaborador.perfil = Constantes.CONST_COD_PERFIL_ADM;
 
     this.listaColaborador.push(colaborador);
+
+    this.perfilAdministrador = new ModelPerfil();
+    this.perfilAdministrador.idPerfil = Number(Constantes.CONST_COD_PERFIL_ADM);
+    this.perfilAdministrador.nombrePerfil = Constantes.CONST_NOMBRE_PERFIL_ADM;
+    this.perfilAdministrador.rutasAcceso= ["/mascotas",
+                                                  "/mascotas/:seleccion?nombre",
+                                                  "/actualizarMascotas",
+                                                  "/cliente",
+                                                  "/actualizarCliente/:identificarCliente",
+                                                  "/colaborador",
+                                                  "/colaborador/:UsuarioRed",
+                                                  "/actualizarColaborador",
+                                                  "/producto/:identificarProducto",
+                                                  "/actualizarProducto"];
+
+    this.perfilVendedor = new ModelPerfil();
+    this.perfilVendedor.idPerfil = Number(Constantes.CONST_COD_PERFIL_VENDENDOR);
+    this.perfilVendedor.nombrePerfil = Constantes.CONST_NOMBRE_PERFIL_VENDENDOR;
+    this.perfilVendedor.rutasAcceso= [    "/mascotas/:seleccion?nombre",
+                                                  "/actualizarMascotas",
+                                                  "/cliente",
+                                                  "/actualizarCliente/:identificarCliente",
+                                                  "/colaborador",
+                                                  "/colaborador/:UsuarioRed",
+                                                  "/actualizarColaborador"];
+
+
+    this.perfilCliente = new ModelPerfil();
+    this.perfilCliente.idPerfil = Number(Constantes.CONST_COD_PERFIL_CLIENTE);
+    this.perfilCliente.nombrePerfil = Constantes.CONST_NOMBRE_PERFIL_CLIENTE;
+    this.perfilCliente.rutasAcceso= [      "/actualizarMascotas",
+                                           "/actualizarProducto"];
   }
 
   //#region mascota
@@ -216,8 +252,6 @@ export class CoreService {
       return false;
     }
     else {
-      this._modelSesion.nombreUsuario = _usuariored;
-      this._modelSesion.perfil = 1;
       return true;
     }
   }
@@ -248,9 +282,23 @@ export class CoreService {
 
   }
   //llena sesion
-  llenarSession(_usuariored: string, tipoUser: number) {
+  llenarSession(_usuariored: string, perfil: number) {
     this._modelSesion.nombreUsuario = _usuariored;
-    this._modelSesion.perfil = tipoUser;
+    
+    switch(perfil.toString()){
+      case Constantes.CONST_COD_PERFIL_ADM: {
+        this._modelSesion.perfil = this.perfilAdministrador;
+        break;
+      }
+      case Constantes.CONST_COD_PERFIL_VENDENDOR:{ 
+        this._modelSesion.perfil = this.perfilVendedor;  
+        break;
+      }
+      case Constantes.CONST_COD_PERFIL_CLIENTE: {
+        this._modelSesion.perfil = this.perfilCliente;
+        break;
+      }
+    }
   }
 
   getSesion(){ 

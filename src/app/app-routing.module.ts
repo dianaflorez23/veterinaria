@@ -13,27 +13,28 @@ import { ColaboradorComponent } from './pages/colaborador/colaborador.component'
 import { ActualizarColaboradorComponent } from './pages/colaborador/actualizar-colaborador.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
+import { PerfilGuard } from './guards/perfil.guard';
 
 
 
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
+  {path: 'restablecerContrasena', component:RestablecerContrasenaComponent},
+  {path:'actualizarCliente/:identificarCliente', component:ActualizarClienteComponent},
   {
     path:'', component:PagesComponent,
     canActivate:[AuthGuard],
     children:[
-    {path:'mascotas', component:MascotasComponent  },
-    {path:'mascotas/:seleccion?nombre', component:MascotasComponent},
-    {path:'actualizarMascotas', component:ActualizarMascotasComponent},
-    {path:'cliente', component:ClienteComponent},
-    {path:'actualizarCliente/:identificarCliente', component:ActualizarClienteComponent},
-    {path: 'restablecerContrasena', component:RestablecerContrasenaComponent},
-    {path: 'colaborador', component:ColaboradorComponent},
-    {path: 'colaborador/:UsuarioRed', component:ColaboradorComponent},
-    {path: 'actualizarColaborador', component:ActualizarColaboradorComponent},
-    {path: 'producto/:identificarProducto', component:ProductoComponent},
-    {path: 'actualizarProducto', component:ActualizarProductoComponent},   
+    {path:'mascotas', component:MascotasComponent,  canActivate:[ PerfilGuard]  },
+    {path:'mascotas/:seleccion?nombre', component:MascotasComponent,  canActivate:[PerfilGuard]},
+    {path:'actualizarMascotas', component:ActualizarMascotasComponent,  canActivate:[PerfilGuard]},
+    {path:'cliente', component:ClienteComponent ,  canActivate:[PerfilGuard] },
+    {path: 'colaborador', component:ColaboradorComponent ,  canActivate:[PerfilGuard] },
+    {path: 'colaborador/:UsuarioRed', component:ColaboradorComponent ,  canActivate:[PerfilGuard] },
+    {path: 'actualizarColaborador', component:ActualizarColaboradorComponent ,  canActivate:[PerfilGuard] },
+    {path: 'producto/:identificarProducto', component:ProductoComponent,  canActivate:[PerfilGuard]},
+    {path: 'actualizarProducto', component:ActualizarProductoComponent,  canActivate:[PerfilGuard]},   
     {path: "**", component:NotFoundComponent},    
    ]
   }

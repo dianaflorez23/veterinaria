@@ -30,7 +30,7 @@ export class MascotasComponent {
   }
 
   ngOnInit(): void {
-    debugger;
+    // debugger;
     if (!this.coreService.validarSession())
       this.router.navigate(['login']);
 

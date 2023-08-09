@@ -9,22 +9,15 @@ import { CoreService } from '../services/core.service';
 
 
 export class AuthGuard implements CanActivate {
-  constructor(
-
-    private coreService: CoreService
-
-  ) {
-
-
+  constructor( private coreService: CoreService) {
   }
-  canActivate():    
-  
-  Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  
-    if(this.coreService.getSesion() &&  (this.coreService.getSesion().nombreUsuario != null || this.coreService.getSesion().nombreUsuario !="" )) {
+
+
+  canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    let modelSesion = this.coreService.getSesion();
+    if(modelSesion &&  modelSesion.nombreUsuario != null && modelSesion.nombreUsuario !="" ) {
       return true;
     }  
-
       return false;
     }
 
