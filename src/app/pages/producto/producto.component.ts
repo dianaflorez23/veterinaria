@@ -31,6 +31,7 @@ export class ProductoComponent {
    }
 
    ngOnInit(): void {
+    debugger;
     this.identificarProducto = "" + this.activateRoute.snapshot.paramMap.get("identificarProducto");
     this.construirFormularioProducto();
 

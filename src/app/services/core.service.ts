@@ -44,18 +44,28 @@ export class CoreService {
                                                   "/colaborador/:UsuarioRed",
                                                   "/actualizarColaborador",
                                                   "/producto/:identificarProducto",
+                                                  "/producto/nuevo",
                                                   "/actualizarProducto"];
+    
+    this.perfilAdministrador.permisos = [0,
+                                   2,
+                                   3,
+                                   5];
 
     this.perfilVendedor = new ModelPerfil();
     this.perfilVendedor.idPerfil = Number(Constantes.CONST_COD_PERFIL_VENDENDOR);
     this.perfilVendedor.nombrePerfil = Constantes.CONST_NOMBRE_PERFIL_VENDENDOR;
     this.perfilVendedor.rutasAcceso= [    "/mascotas/:seleccion?nombre",
+                                          "/mascotas",
                                                   "/actualizarMascotas",
                                                   "/cliente",
                                                   "/actualizarCliente/:identificarCliente",
                                                   "/actualizarProducto"
                                                   ];
-
+    this.perfilVendedor.permisos = [0,
+                                         2,
+                                         5];
+                                                  
 
     this.perfilCliente = new ModelPerfil();
     this.perfilCliente.idPerfil = Number(Constantes.CONST_COD_PERFIL_CLIENTE);
@@ -165,6 +175,8 @@ export class CoreService {
   }
 
   agregarColaborador(usuario: colaboradorModel) {
+    debugger;
+    usuario.perfil = "2";
     this.listaColaborador.push(usuario);
     console.log(this.listaColaborador);
     console.log(usuario);
