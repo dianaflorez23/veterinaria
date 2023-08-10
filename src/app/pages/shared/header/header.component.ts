@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuModel } from 'src/app/models/modelMenu';
 import { CoreService } from 'src/app/services/core.service';
 
@@ -11,7 +12,8 @@ export class HeaderComponent {
   
   listaMenu: MenuModel[] = [];
 
-  constructor(private coreService: CoreService){
+  constructor(private coreService: CoreService
+            , private router: Router){
 
   }
 
@@ -23,6 +25,12 @@ export class HeaderComponent {
 
   validarPermisos(opcion : number){
     return this.coreService.getSesion().perfil.permisos.includes(opcion);
+  }
+
+  cerrarCesion(){
+    this.coreService.cerrarSesion();
+    this.router.navigate(['login']);
+    return;
   }
 
 

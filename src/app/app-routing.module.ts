@@ -35,7 +35,7 @@ const routes: Routes = [
     {path: 'actualizarColaborador', component:ActualizarColaboradorComponent ,  canActivate:[PerfilGuard] },
     {path: 'producto/:identificarProducto', component:ProductoComponent,  canActivate:[PerfilGuard]},
     {path: 'actualizarProducto', component:ActualizarProductoComponent,  canActivate:[PerfilGuard]},   
-    {path: "**", component:NotFoundComponent},    
+    {path: "**", component:LoginComponent},    
    ]
   }
 ];

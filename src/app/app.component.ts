@@ -5,6 +5,7 @@ import { RequestAdmParametros, ResponseAdmParametros, RequestAdmPantallas,  Mode
 import { WSSerGeneralService, } from './services/wsser-general.service';
 import { Observable } from 'rxjs';
 import { CoreService } from './services/core.service';
+import { ModelSesion } from './models/modelSesion';
 
 
 
@@ -15,15 +16,16 @@ import { CoreService } from './services/core.service';
 })
 export class AppComponent {
 
-  constructor(
-    
-  private coreService: CoreService) {
+  _modelSesion! : ModelSesion;
+  _modelSesion$! : Observable<ModelSesion>;
 
+  constructor( private coreService: CoreService) {
   }
   
-
-  userIsLogged(){
-  return this.coreService.validarSession();
+  ngOnInit(): void {
+    this._modelSesion$ = this.coreService.getSesion$();
+    this._modelSesion$.subscribe( sesion => 
+      this._modelSesion = sesion
+      );
   }
-
 }
