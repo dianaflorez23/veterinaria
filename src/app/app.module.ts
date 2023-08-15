@@ -19,6 +19,8 @@ import { ActualizarColaboradorComponent  } from './pages/colaborador/actualizar-
 import { ActualizarProductoComponent } from './pages/producto/actualizar-producto.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InterceptorMascotasInterceptor } from './interceptor-mascotas.interceptor';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 
@@ -51,9 +53,7 @@ import { InterceptorMascotasInterceptor } from './interceptor-mascotas.intercept
     ReactiveFormsModule,
     HttpClientModule    
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorMascotasInterceptor, multi: true}
-  ],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: InterceptorMascotasInterceptor, multi: true},CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

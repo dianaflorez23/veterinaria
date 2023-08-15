@@ -8,6 +8,8 @@ import { WSSerGeneralService } from 'src/app/services/wsser-general.service';
 import { CoreService } from 'src/app/services/core.service';
 import { clienteModel } from 'src/app/models/modelCiente';
 import { Constantes } from '../shared/Constantes';
+import { CookieService } from 'ngx-cookie-service';
+import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-login',
@@ -20,12 +22,16 @@ export class LoginComponent {
   //Formulario
 
   formDatoslogin: FormGroup = new FormGroup({});
+ 
 
   constructor(
     private fb: UntypedFormBuilder
     , private WSserGeneral: WSSerGeneralService
     , private router: Router
-    , private coreService: CoreService) {
+    , private coreService: CoreService
+    , private cookie: CookieService
+ 
+    ) {
 
   }
 
@@ -52,6 +58,8 @@ export class LoginComponent {
       case Constantes.CONST_COD_PERFIL_CLIENTE:
         if (this.coreService.loginCliente(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.password)) {
           this.coreService.llenarSession(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.perfil);
+          this.cookie.set("usuario", this.formDatoslogin.value.usuariored);
+          this.cookie.set("perfil", this.formDatoslogin.value.perfil);
           this.router.navigate(['actualizarProducto']);
           return;
         }
@@ -79,12 +87,24 @@ export class LoginComponent {
    
 }
 
+// getIdToken(){
+//   return this.cookies.get("token");
+// };
+
+// guarCookie(){
+//   return this.cookies.get("token");
+
+// }
+
+
 validacionLdap(usuario: string, password: string,) {
 
   this.WSserGeneral.validacionLdap(usuario, password).subscribe((resp: any) => {
     debugger;
     if (resp == true) {
       this.coreService.llenarSession(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.perfil);
+      this.cookie.set("usuario", this.formDatoslogin.value.usuariored);
+      this.cookie.set("perfil", this.formDatoslogin.value.perfil);
       switch (this.formDatoslogin.value.perfil) {
         case Constantes.CONST_COD_PERFIL_ADM: {
           debugger;

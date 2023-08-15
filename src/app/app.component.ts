@@ -17,7 +17,8 @@ export class AppComponent {
 
   constructor(
     
-  private coreService: CoreService) {
+  private coreService: CoreService
+  ) {
 
   }
   

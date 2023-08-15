@@ -5,6 +5,7 @@ import { colaboradorModel, RestablecerContrasenaModel } from '../models/modelCol
 import { ModelSesion, ModelPerfil } from '../models/modelSesion';
 import { Constantes } from '../pages/shared/Constantes';
 import { productoModel } from '../models/modelProducto';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -24,7 +25,7 @@ export class CoreService {
   perfilVendedor !: ModelPerfil;
   perfilCliente !: ModelPerfil;
 
-  constructor() {
+  constructor(private cookies: CookieService) {
 
     let colaborador = new colaboradorModel();
     colaborador.UsuarioRed = "icm8905c";
