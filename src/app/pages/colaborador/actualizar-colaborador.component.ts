@@ -17,7 +17,7 @@ export class ActualizarColaboradorComponent {
   , private router: Router) {
 }
   ngOnInit(): void {
-    debugger
+    //debugger
 
      this.listaColaborador = this.coreService.getListaColaborador()
      

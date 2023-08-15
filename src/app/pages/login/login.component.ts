@@ -52,7 +52,7 @@ export class LoginComponent {
   }
 
   validarLogin() {
-     debugger
+     //debugger
     if (this.formDatoslogin.invalid) { return }
     switch (this.formDatoslogin.value.perfil) {
       case Constantes.CONST_COD_PERFIL_CLIENTE:
@@ -65,7 +65,7 @@ export class LoginComponent {
         }
         break;
       case Constantes.CONST_COD_PERFIL_ADM:
-        // debugger
+        // //debugger
         if (this.coreService.validarColaborador(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.perfil )) {
           this.validacionLdap(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.password);
 
@@ -100,20 +100,20 @@ export class LoginComponent {
 validacionLdap(usuario: string, password: string,) {
 
   this.WSserGeneral.validacionLdap(usuario, password).subscribe((resp: any) => {
-    debugger;
+    //debugger;
     if (resp == true) {
       this.coreService.llenarSession(this.formDatoslogin.value.usuariored, this.formDatoslogin.value.perfil);
       this.cookie.set("usuario", this.formDatoslogin.value.usuariored);
       this.cookie.set("perfil", this.formDatoslogin.value.perfil);
       switch (this.formDatoslogin.value.perfil) {
         case Constantes.CONST_COD_PERFIL_ADM: {
-          debugger;
+          //debugger;
           this.router.navigate(['producto/nuevo']); 
         }
           break;
         
         case Constantes.CONST_COD_PERFIL_VENDENDOR: {
-          debugger;
+          //debugger;
           this.router.navigate(['mascotas']);
         }
           break;

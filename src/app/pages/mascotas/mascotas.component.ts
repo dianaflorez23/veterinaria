@@ -30,7 +30,7 @@ export class MascotasComponent {
   }
 
   ngOnInit(): void {
-    // debugger;
+    // //debugger;
     if (!this.coreService.validarSession())
       this.router.navigate(['login']);
 
@@ -71,7 +71,7 @@ export class MascotasComponent {
   }
 
   guardarMascota() {
-    debugger;
+    //debugger;
     if (this.formDatosMacota.invalid) { return }
     this.mascota.seleccion = this.formDatosMacota.value.seleccion;
     this.mascota.nombre = this.formDatosMacota.value.nombre;

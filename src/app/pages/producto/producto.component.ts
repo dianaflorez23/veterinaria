@@ -31,7 +31,7 @@ export class ProductoComponent {
    }
 
    ngOnInit(): void {
-    debugger;
+    //debugger;
     this.identificarProducto = "" + this.activateRoute.snapshot.paramMap.get("identificarProducto");
     this.construirFormularioProducto();
 
@@ -81,7 +81,7 @@ export class ProductoComponent {
   }
 
   guardarProducto(){
-    debugger;
+    //debugger;
     if (this.formDatosProducto.invalid) { return } 
 
     if (this.identificarProducto === Constantes.CONST_PARAM_IN_PATH) {

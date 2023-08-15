@@ -27,7 +27,7 @@ export class ColaboradorComponent {
   }
 
   ngOnInit(): void {
-    debugger
+    //debugger
     
     this.UsuarioRed = "" + this.activateRoute.snapshot.paramMap.get("UsuarioRed");
     this.construirFormulariocolaborador();
@@ -53,7 +53,7 @@ export class ColaboradorComponent {
 
 
   guardarColaborador() {
-    debugger
+    //debugger
     if (this.formDatoscolaborador.invalid) { return }
     if ( this.UsuarioRed == "null" || this.UsuarioRed === Constantes.CONST_PARAM_IN_PATH){
       console.log(this.formDatoscolaborador.value);

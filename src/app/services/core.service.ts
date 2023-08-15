@@ -6,6 +6,8 @@ import { ModelSesion, ModelPerfil } from '../models/modelSesion';
 import { Constantes } from '../pages/shared/Constantes';
 import { productoModel } from '../models/modelProducto';
 import { CookieService } from 'ngx-cookie-service';
+import { Observable, Subject } from 'rxjs';
+
 
 
 @Injectable({
@@ -20,6 +22,7 @@ export class CoreService {
   ListaProducto: productoModel[] = [];
 
   _modelSesion: ModelSesion = new ModelSesion();
+  public _modelSesion$ = new Subject<ModelSesion>();
   
   perfilAdministrador !: ModelPerfil;
   perfilVendedor !: ModelPerfil;
@@ -176,7 +179,7 @@ export class CoreService {
   }
 
   agregarColaborador(usuario: colaboradorModel) {
-    debugger;
+    //debugger;
     usuario.perfil = "2";
     this.listaColaborador.push(usuario);
     console.log(this.listaColaborador);
@@ -316,12 +319,21 @@ export class CoreService {
         break;
       }
     }
+
+    this._modelSesion$.next(this._modelSesion);
   }
 
   getSesion(){ 
     return this._modelSesion;
   }
+  getSesion$():Observable<ModelSesion>{ 
+    return this._modelSesion$.asObservable();
+  }
 
+  cerrarSesion(){
+    this._modelSesion =  new ModelSesion();
+    this._modelSesion$.next(this._modelSesion);
+  }
 
 
 

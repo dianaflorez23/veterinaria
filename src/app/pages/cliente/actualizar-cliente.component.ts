@@ -56,7 +56,7 @@ export class ActualizarClienteComponent {
   }
 
   guardarCliente() {
-debugger;
+//debugger;
     if (this.formRegistrarCliente.invalid) { return } 
    // if (this.formRegistrarCliente.value.password !== this.formRegistrarCliente.value.ConfirmarContrasena) { alert("Contraseñas no coniciden") }
     if (this.identificarCliente === Constantes.CONST_PARAM_IN_PATH) {
