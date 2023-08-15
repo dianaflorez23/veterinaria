@@ -14,6 +14,7 @@ import { ActualizarColaboradorComponent } from './pages/colaborador/actualizar-c
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PerfilGuard } from './guards/perfil.guard';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path: 'restablecerContrasena', component:RestablecerContrasenaComponent},
   {path:'actualizarCliente/:identificarCliente', component:ActualizarClienteComponent},
+  {path: 'modal', component:ModalComponent},
   {
     path:'', component:PagesComponent,
     canActivate:[AuthGuard],

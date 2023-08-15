@@ -20,6 +20,7 @@ import { ActualizarProductoComponent } from './pages/producto/actualizar-product
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InterceptorMascotasInterceptor } from './interceptor-mascotas.interceptor';
 import { CookieService } from 'ngx-cookie-service';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -45,6 +46,7 @@ import { CookieService } from 'ngx-cookie-service';
     ColaboradorComponent,
     ActualizarColaboradorComponent,
     NotFoundComponent,
+    ModalComponent,
   
   ],
   imports: [
