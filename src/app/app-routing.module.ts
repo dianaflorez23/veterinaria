@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'restablecerContrasena', component:RestablecerContrasenaComponent},
   {path:'actualizarCliente/:identificarCliente', component:ActualizarClienteComponent},
   {path: 'modal', component:ModalComponent},
+  
   {
     path:'', component:PagesComponent,
     canActivate:[AuthGuard],
@@ -37,9 +38,13 @@ const routes: Routes = [
     {path: 'actualizarColaborador', component:ActualizarColaboradorComponent ,  canActivate:[PerfilGuard] },
     {path: 'producto/:identificarProducto', component:ProductoComponent,  canActivate:[PerfilGuard]},
     {path: 'actualizarProducto', component:ActualizarProductoComponent,  canActivate:[PerfilGuard]},   
-    {path: "**", component:LoginComponent},    
+    {path: '', pathMatch: 'full', redirectTo: '/login'},
+          {path: '**', pathMatch: 'full', redirectTo: '/login'}
+    ,    
    ]
   }
+  ,{path: '', pathMatch: 'full', redirectTo: '/login'},
+          {path: '**', pathMatch: 'full', redirectTo: '/login'}
 ];
 
 @NgModule({

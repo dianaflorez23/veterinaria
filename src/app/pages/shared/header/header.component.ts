@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalComponent } from 'src/app/modal/modal.component';
 import { MenuModel } from 'src/app/models/modelMenu';
 import { CoreService } from 'src/app/services/core.service';
 
@@ -11,6 +12,8 @@ import { CoreService } from 'src/app/services/core.service';
 export class HeaderComponent {
   
   listaMenu: MenuModel[] = [];
+  @ViewChild ("modalAcercaDe") modalAcercaDe! : ModalComponent;
+  @ViewChild ("Notificacion") modalNotificacion! : ModalComponent;
 
   constructor(private coreService: CoreService
             , private router: Router){
@@ -32,6 +35,19 @@ export class HeaderComponent {
     this.router.navigate(['login']);
     return;
   }
+  abrirmodalAcercaDe(){
+    console.log("abriendo modal");
+    this.modalAcercaDe.abrirModal();
+  }
+  cerrarmodalAcercaDe(){
+    console.log("se solicito cerrar modal")
+  }
+
+  abrirmodalNotificacion(){
+    this.modalNotificacion.abrirModal();
+  }
+
+
 
 
 }

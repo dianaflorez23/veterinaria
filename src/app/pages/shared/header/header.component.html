@@ -23,6 +23,12 @@
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['/actualizarProducto']" *ngIf="validarPermisos(0)">producto</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="abrirmodalAcercaDe()">acerca de</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="abrirmodalNotificacion()">notificacion</a>
+      </li>
 
 
     </ul>
@@ -33,3 +39,5 @@
     
   </div>
 </nav>
+<app-modal  #modalAcercaDe (btnCerrar)="cerrarmodalAcercaDe()" [labelTitulo]="'acerca de'" [mostrarTitulo]="true" [txtContenido]="'contenido'" [mostrarContenido]="true" [labelBtnClose]="'okey'" [mostrarClose]="true"  [mostraSave]="false" [longitudModal]="'modal-lg'" [colorDinamico1]="'btn-danger'"  [colorDinamico2]="'btn-primary'" [idDinamico]="'abrirmodalAcercaDe'"  ></app-modal>
+<app-modal  #Notificacion [mostrarTitulo]="false" [txtContenido]="'esto es una alerta'" [mostrarContenido]="true" [mostrarClose]="false"  [mostraSave]="false" [longitudModal]="'modal-sm'" [colorDinamico1]="'btn-danger'"  [colorDinamico2]="'btn-primary'" [idDinamico]="'modalNotificacion'"  ></app-modal>

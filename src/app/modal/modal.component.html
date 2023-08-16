@@ -1,25 +1,32 @@
 
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    <button [hidden]="true" type="button" id="verModal" class="btn btn-primary" data-toggle="modal"  [attr.data-target] =" '#' + idDinamico "  >
         ver modal
-    </button>
-  
+    </button>  
+    
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" >
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" >{{titulo}}</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  <div class="modal "  [id]="idDinamico" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" [class]="longitudModal" >
+      <div class="modal-content ">
+        <div *ngIf="mostrarTitulo" class="modal-header">
+          <h5 class="modal-title"  >{{labelTitulo}}</h5>
+          <button type="button" id="Titulo" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          {{contenido}}
+        <div *ngIf="mostrarContenido" class="modal-body" id="Contenido">
+          {{txtContenido}}
+<br><br><br>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">{{Close}}</button>
-          <button type="button" class="btn btn-primary">{{Save}}</button>
+        <div class="row col-sm-12">
+            <div *ngIf="mostraSave " class="col-sm-6">
+                <a id="Save" data-toggle="modal" data-target="#exampleModal3"  href="#" class="form-control btn" (click)="guardar()" [class]="colorDinamico1">{{labelSave}}</a>
+              </div>
+            <div *ngIf="mostrarClose" class="col-sm-6">
+                <a id="Close" data-toggle="modal" data-target="#exampleModal3"  href="#" class="form-control btn " data-dismiss="modal" (click)="cerrar() " [class]="colorDinamico2" >{{labelBtnClose}}</a>
+            </div>
+          
         </div>
+<br>
       </div>
     </div>
   </div>
