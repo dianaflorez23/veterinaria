@@ -24,10 +24,12 @@ export class ModalComponent {
    @Output("btnGuardar") eventGuardar : EventEmitter <any> = new EventEmitter();
    @Output("btnCerrar") eventCerrar : EventEmitter <any> = new EventEmitter();
 
+   idBtnAbrirModal !: string;
 
-   ngOnInit(): void 
-   {
+
+   ngOnInit(): void {
     // this.abrirModal();
+    this.idBtnAbrirModal = 'btn' + this.idDinamico;
   } 
 
   ngAfterViewInit(): void{
@@ -36,8 +38,7 @@ export class ModalComponent {
   }
 
    abrirModal(){
-    console.log("abrirmodal")
-    document.getElementById("verModal")?.click();
+    document.getElementById(this.idBtnAbrirModal)?.click();
    }
 
 

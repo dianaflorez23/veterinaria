@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalComponent } from 'src/app/modal/modal.component';
+import { ModalComponent } from 'src/app/pages/shared/header/modal/modal.component';
 import { MenuModel } from 'src/app/models/modelMenu';
 import { CoreService } from 'src/app/services/core.service';
 

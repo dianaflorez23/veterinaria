@@ -14,7 +14,7 @@ import { ActualizarColaboradorComponent } from './pages/colaborador/actualizar-c
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { PerfilGuard } from './guards/perfil.guard';
-import { ModalComponent } from './modal/modal.component';
+import { ModalComponent } from './pages/shared/header/modal/modal.component';
 
 
 
@@ -39,12 +39,12 @@ const routes: Routes = [
     {path: 'producto/:identificarProducto', component:ProductoComponent,  canActivate:[PerfilGuard]},
     {path: 'actualizarProducto', component:ActualizarProductoComponent,  canActivate:[PerfilGuard]},   
     {path: '', pathMatch: 'full', redirectTo: '/login'},
-          {path: '**', pathMatch: 'full', redirectTo: '/login'}
+    {path: '**', pathMatch: 'full', redirectTo: '/login'}
     ,    
    ]
   }
-  ,{path: '', pathMatch: 'full', redirectTo: '/login'},
-          {path: '**', pathMatch: 'full', redirectTo: '/login'}
+  , {path:'', redirectTo:'login', pathMatch:'full'},
+    {path:'**', component: LoginComponent}
 ];
 
 @NgModule({
