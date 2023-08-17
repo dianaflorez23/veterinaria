@@ -51,7 +51,7 @@ export class CoreService {
                                                   "/producto/nuevo",
                                                   "/actualizarProducto"];
     
-    this.perfilAdministrador.permisos = [0,
+    this.perfilAdministrador.permisos = [0,1,
                                    2,
                                    3,
                                    5];
