@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {  } from 'src/app/models/modelColaborador';
 import { productoModel } from 'src/app/models/modelProducto';
@@ -10,6 +10,7 @@ import { CoreService } from 'src/app/services/core.service';
   styleUrls: ['./actualizar-producto.component.css']
 })
 export class ActualizarProductoComponent {
+
   listaProducto: productoModel[] = []; 
   
 
@@ -27,14 +28,24 @@ export class ActualizarProductoComponent {
   }
 
   EliminarProducto(id:string){
+    console.log("actgualizar")
     this.coreService.EliminarProducto(id);
     this.router.navigate(['actualizarProducto']);
+  }
+
+  EditarProducto(id:string){
+    console.log("actgualizar")
+    this.coreService.EliminarProducto(id);
+    this.router.navigate(['actualizarProducto']);
+ 
   }
   
   validarPermisos(opcion : number){
     return this.coreService.getSesion().perfil.permisos.includes(opcion);
   }
+ 
   
+
 }
 
 

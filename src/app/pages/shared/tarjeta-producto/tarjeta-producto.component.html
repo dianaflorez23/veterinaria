@@ -1,0 +1,28 @@
+
+<div class="galeria" [id]="idDinamico" >
+    <div class="col-sm-6 tarjeta" *ngFor="let producto of listaProducto ">
+      <div class="card row">
+       <div class="card-header" style=" font-family: fantasy;text-align: center;font-size: larger;">
+         {{labelProudcto}}
+       </div>
+        <div class="card-body">
+          <h5 class="card-title text-center"><img class="imagen-car" [src]= "producto.imagen"></h5>
+        
+        </div>
+        <div class="card-footer" style="text-align: center;">
+         <p class="card-text row"><label id="desayuno">{{ producto.producto}}</label> </p>
+         <p class="card-text row"><label id="desayuno">{{ producto.precio}}</label> </p>
+       <div class="row col-sm-12">
+         <div class="col-sm-6">
+        <!-- <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="form-control btn btn-primary" [routerLink]="['/producto/'+producto.id]">Editar producto</a>-->
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="form-control btn btn-primary" (click)="EditarProducto(producto.id)">Editar producto</a>
+       </div>
+         <div class="col-sm-6">
+         <a data-toggle="modal" data-target="#exampleModal3"  href="#" class="form-control btn btn-danger" (click)="EliminarProducto(producto.id)">Eliminar producto</a>
+          </div>
+       </div>
+       </div>
+      </div>
+    </div>
+  
+  </div>

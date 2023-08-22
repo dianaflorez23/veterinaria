@@ -41,8 +41,6 @@ export class ModalComponent {
     document.getElementById(this.idBtnAbrirModal)?.click();
    }
 
-
-
    guardar(){
     this.eventGuardar.emit();
    }

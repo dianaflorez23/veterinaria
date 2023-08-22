@@ -20,7 +20,8 @@ import { ActualizarProductoComponent } from './pages/producto/actualizar-product
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { InterceptorMascotasInterceptor } from './interceptor-mascotas.interceptor';
 import { CookieService } from 'ngx-cookie-service';
-import { ModalComponent } from './pages/shared/header/modal/modal.component';
+import { ModalComponent } from './pages/shared/modal/modal.component';
+import { TarjetaProductoComponent } from './pages/shared/tarjeta-producto/tarjeta-producto.component';
 
 
 
@@ -47,6 +48,7 @@ import { ModalComponent } from './pages/shared/header/modal/modal.component';
     ActualizarColaboradorComponent,
     NotFoundComponent,
     ModalComponent,
+    TarjetaProductoComponent,
   
   ],
   imports: [

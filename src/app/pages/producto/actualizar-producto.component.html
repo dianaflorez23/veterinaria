@@ -10,7 +10,14 @@
 </div>
 <br/>
 
-<div class="galeria" >
+<app-tarjeta-producto  
+                 [labelProudcto]="'producto'" >
+                 (btnEliminar)="EliminarProducto(id)"
+                 (btnEditar)="EditarProducto(id)"
+ 
+</app-tarjeta-producto>
+
+<!-- <div class="galeria" >
   <div class="col-sm-3 tarjeta" *ngFor="let producto of listaProducto ">
     <div class="card row">
      <div class="card-header" style=" font-family: fantasy;text-align: center;font-size: larger;">
@@ -36,7 +43,7 @@
   </div>
 
 </div>
- 
+  -->
 
 
  
